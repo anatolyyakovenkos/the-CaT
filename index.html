@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PVE - Full Insurance Protection</title>
+    <title>PVE - Full PVE Protection</title>
     <style>
         * {
             margin: 0;
@@ -163,7 +163,7 @@
             font-weight: 700;
         }
 
-        .insurance-explanation {
+        .pve-explanation {
             background: linear-gradient(135deg, #e8f9f1 0%, #d4f4e6 100%);
             padding: 2rem;
             border-radius: 15px;
@@ -171,14 +171,14 @@
             border: 2px solid #3ac682;
         }
 
-        .insurance-explanation h3 {
+        .pve-explanation h3 {
             font-size: 1.5rem;
             color: #3ac682;
             margin-bottom: 1rem;
             font-weight: 700;
         }
 
-        .insurance-explanation p {
+        .pve-explanation p {
             font-size: 1.1rem;
             line-height: 1.8;
             color: #2a8a5e;
@@ -231,7 +231,7 @@
             margin-bottom: 0.5rem;
         }
 
-        .insurance-table-section {
+        .pve-table-section {
             background: #ffffff;
             border-radius: 20px;
             padding: 2.5rem;
@@ -240,7 +240,7 @@
             box-shadow: 0 8px 32px rgba(58, 198, 130, 0.15);
         }
 
-        .insurance-table-section h2 {
+        .pve-table-section h2 {
             font-size: 1.8rem;
             margin-bottom: 1.5rem;
             color: #3ac682;
@@ -352,7 +352,7 @@
     </style>
 </head>
 <body>
-    <a href="https://x.com/wemadepvecoin" target="_blank" rel="noopener noreferrer" class="x-button">
+    <a href="https://x.com/wemadepve" target="_blank" rel="noopener noreferrer" class="x-button">
         <svg viewBox="0 0 24 24" aria-hidden="true">
             <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path>
         </svg>
@@ -372,45 +372,33 @@
         </div>
 
         <div class="info-section">
-            <div class="insurance-explanation">
-                <h3>How Our Insurance Protection Works</h3>
-                <p>
-                    When you lose, we buy supply using creator rewards and send it directly to your wallet.
-                </p>
-            </div>
-
-            <h2>Developer Fee Distribution</h2>
+            <h2>How Our PVE Protection Works</h2>
             <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #2a8a5e;">
-                The amount displayed above represents our current developer fee pool, which funds both our insurance program and strategic buyback initiatives. This value updates every 5 seconds in real-time.
+                When you lose, we buy supply using creator rewards and send it directly to your wallet.
             </p>
 
-            <div class="fee-breakdown">
-                <div class="fee-card">
-                    <h3>Insurance Pool</h3>
-                    <div class="percentage">90%</div>
-                    <p>
-                        The majority of collected fees are dedicated to our insurance pool, ensuring instant protection and supply buyback for any holders experiencing losses.
-                    </p>
-                </div>
-
-                <div class="fee-card">
-                    <h3>Development Fund</h3>
-                    <div class="percentage">10%</div>
-                    <p>
-                        A portion supports ongoing platform maintenance, insurance system improvements, and operational infrastructure.
-                    </p>
-                </div>
-            </div>
+            <h2>Developer Fee Distribution</h2>
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; color: #2a8a5e;">
+                The amount displayed above represents our current developer fee pool, which funds both our PVE program and strategic buyback initiatives. This value updates every 5 seconds in real-time.
+            </p>
+            
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 1rem; color: #2a8a5e;">
+                <strong style="color: #3ac682;">90%</strong> of collected fees are dedicated to our PVE pool, ensuring instant protection and supply buyback for any holders experiencing losses.
+            </p>
+            
+            <p style="font-size: 1.1rem; line-height: 1.8; margin-bottom: 2rem; color: #2a8a5e;">
+                <strong style="color: #3ac682;">10%</strong> supports ongoing platform maintenance, PVE system improvements, and operational infrastructure.
+            </p>
         </div>
 
-        <div class="insurance-table-section">
-            <h2>Recent Insurance Payouts & Supply Buys</h2>
+        <div class="pve-table-section">
+            <h2>Recent PVE Payouts & Supply Buys</h2>
             <p style="font-size: 1rem; line-height: 1.6; margin-bottom: 1rem; color: #2a8a5e;">
-                Track all buys made using our insurance pool supply in real-time. Every transaction is transparent and instant.
+                Track all buys made using our PVE pool supply in real-time. Every transaction is transparent and instant.
             </p>
             
             <div class="table-container">
-                <table id="insuranceTable">
+                <table id="pveTable">
                     <thead>
                         <tr>
                             <th>Date & Time</th>
@@ -429,8 +417,8 @@
     </div>
 
     <script>
-        const STORAGE_KEY = 'insurance_project_fee_amount';
-        const TABLE_STORAGE_KEY = 'insurance_project_insurance_table';
+        const STORAGE_KEY = 'pve_project_fee_amount';
+        const TABLE_STORAGE_KEY = 'pve_project_pve_table';
         let currentFee = 0.00;
         const feeElement = document.getElementById('feeAmount');
         const updateIndicator = document.getElementById('updateIndicator');
@@ -448,7 +436,7 @@
             '2wXm...6tLq'
         ];
 
-        let insuranceData = [];
+        let pveData = [];
 
         // Load saved data
         function loadSavedData() {
@@ -460,9 +448,9 @@
 
             const savedTable = localStorage.getItem(TABLE_STORAGE_KEY);
             if (savedTable !== null) {
-                insuranceData = JSON.parse(savedTable);
+                pveData = JSON.parse(savedTable);
             }
-            // If no saved table, insuranceData stays empty []
+            // If no saved table, pveData stays empty []
         }
 
         // Save data
@@ -471,7 +459,7 @@
         }
 
         function saveTableData() {
-            localStorage.setItem(TABLE_STORAGE_KEY, JSON.stringify(insuranceData));
+            localStorage.setItem(TABLE_STORAGE_KEY, JSON.stringify(pveData));
         }
 
         function formatCurrency(amount) {
@@ -500,7 +488,7 @@
             return sampleWallets[Math.floor(Math.random() * sampleWallets.length)];
         }
 
-        function addNewInsuranceEntry() {
+        function addNewPVEEntry() {
             const newEntry = {
                 date: new Date(),
                 wallet: generateRandomWallet(),
@@ -509,11 +497,11 @@
                 status: 'completed'
             };
 
-            insuranceData.unshift(newEntry);
+            pveData.unshift(newEntry);
             
             // Keep only last 15 entries
-            if (insuranceData.length > 15) {
-                insuranceData.pop();
+            if (pveData.length > 15) {
+                pveData.pop();
             }
 
             saveTableData();
@@ -523,7 +511,7 @@
         function renderTable() {
             tableBody.innerHTML = '';
             
-            insuranceData.forEach(entry => {
+            pveData.forEach(entry => {
                 const row = document.createElement('tr');
                 const statusClass = entry.status === 'completed' ? 'status-completed' : 'status-pending';
                 const statusText = entry.status === 'completed' ? 'Completed' : 'Pending';
@@ -571,14 +559,14 @@
             setInterval(updateFee, 5000);
         }, 5000);
 
-        // Add first insurance entry after 10 seconds
+        // Add first PVE entry after 10 seconds
         setTimeout(() => {
-            addNewInsuranceEntry();
+            addNewPVEEntry();
         }, 10000);
 
         // Continue adding entries every 25-35 seconds indefinitely
         setInterval(() => {
-            addNewInsuranceEntry();
+            addNewPVEEntry();
         }, 30000); // Every 30 seconds (can vary with the random times in the function)
     </script>
 </body>
