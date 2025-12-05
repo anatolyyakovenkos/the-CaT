@@ -3,271 +3,56 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Welcome to Ads</title>
-    <link rel="icon" type="image/x-icon" href="angry.png">
+    <title>bob</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-
         body {
             min-height: 100vh;
-            background-color: #FDF8F3;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             display: flex;
             justify-content: center;
             align-items: center;
-            padding: 40px;
-            color: #3D3229;
+            background: white;
+            font-family: system-ui, -apple-system, sans-serif;
         }
-
-        .page {
-            display: none;
-        }
-
-        .page.active {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            width: 100%;
-        }
-
-        .top-buttons {
-            position: fixed;
-            top: 24px;
-            right: 24px;
-            display: flex;
-            gap: 12px;
-            z-index: 10;
-        }
-
-        .nav-button {
-            background-color: #E8DDD4;
-            border: none;
-            padding: 12px 24px;
-            border-radius: 8px;
-            font-size: 14px;
-            font-weight: 600;
-            color: #5C4D3C;
-            cursor: pointer;
-            transition: all 0.2s ease;
-            text-decoration: none;
-        }
-
-        .nav-button:hover {
-            background-color: #DED0C4;
-            transform: translateY(-1px);
-        }
-
-        .main-container {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 60px;
-            width: 100%;
-            max-width: 1200px;
-        }
-
         .content {
             max-width: 600px;
+            padding: 20px;
+            color: black;
             text-align: center;
         }
-
-        .side-image {
-            flex-shrink: 0;
-        }
-
-        .side-image img {
-            max-width: 300px;
-            height: auto;
-            border-radius: 12px;
-        }
-
-        h1 {
-            font-size: 48px;
-            font-weight: 700;
-            margin-bottom: 40px;
-            color: #2C2419;
-            letter-spacing: -1px;
-        }
-
-        h2 {
-            font-size: 28px;
-            font-weight: 600;
-            margin-bottom: 24px;
-            margin-top: 40px;
-            color: #2C2419;
-        }
-
         p {
-            font-size: 18px;
-            line-height: 1.8;
-            margin-bottom: 24px;
-            color: #5C4D3C;
+            margin-bottom: 1.5em;
+            line-height: 1.6;
         }
-
-        .highlight {
-            color: #8B6914;
-            font-weight: 600;
+        p:last-child {
+            margin-bottom: 0;
         }
-
-        .tweet-button {
+        .btn {
             display: inline-block;
-            margin-top: 32px;
-            background-color: #2C2419;
-            color: #FDF8F3;
-            padding: 14px 32px;
-            border-radius: 8px;
-            font-size: 16px;
-            font-weight: 600;
+            margin-top: 2em;
+            padding: 12px 24px;
+            background: black;
+            color: white;
             text-decoration: none;
-            transition: all 0.2s ease;
+            border-radius: 4px;
         }
-
-        .tweet-button:hover {
-            background-color: #3D3229;
-            transform: translateY(-2px);
-        }
-
-        /* Ads Page Styles */
-        .ads-content {
-            max-width: 700px;
-            text-align: center;
-        }
-
-        .stats-container {
-            display: flex;
-            justify-content: center;
-            gap: 40px;
-            margin: 40px 0;
-            flex-wrap: wrap;
-        }
-
-        .stat-box {
-            background-color: #E8DDD4;
-            padding: 30px 40px;
-            border-radius: 12px;
-            text-align: center;
-        }
-
-        .stat-number {
-            font-size: 36px;
-            font-weight: 700;
-            color: #2C2419;
-        }
-
-        .stat-label {
-            font-size: 14px;
-            color: #5C4D3C;
-            margin-top: 8px;
-        }
-
-        .plan-section {
-            background-color: #E8DDD4;
-            padding: 30px;
-            border-radius: 12px;
-            margin-top: 40px;
+        .btn:hover {
+            background: #333;
         }
     </style>
 </head>
 <body>
-
-    <!-- HOME PAGE -->
-    <div class="page active" id="homePage">
-        <div class="top-buttons">
-            <a href="https://x.com/plzbuyourcoin" target="_blank" class="nav-button">x.com</a>
-            <button class="nav-button" onclick="showPage('adsPage')">View Our Ads</button>
-        </div>
-
-        <div class="main-container">
-            <div class="content">
-                <h1>welcome to ads</h1>
-                
-                <p>
-                    so x gave us a insanely free <span class="highlight">10m+ narrative</span> yesterday sadly it got farmed and pretty much ruined
-                </p>
-                
-                <p>
-                    so we decided to fix that, we spent <span class="highlight">1000$ of ads</span> on this memecoin and that gets us <span class="highlight">250k eyes</span> but using fees we can get <span class="highlight">10m+ eyes</span>
-                </p>
-                
-                <p>
-                    check yourself the ads we are launching on the top right (theres a button)
-                </p>
-                
-                <p>
-                    so yeah share it to ur friends and plz buy our memecoin
-                </p>
-
-                <a href="https://x.com/X/status/1996406623431205216" target="_blank" class="tweet-button">view the tweet</a>
-            </div>
-
-            <div class="side-image">
-                <img src="x.png" alt="Ad Image">
-            </div>
-        </div>
+    <div class="content">
+        <p>hi guys my name is james and i've been trading crypto for months</p>
+        <p>the market is destroyed with bundles, larps, 50 sol buys at 7k marketcap and flexing it on x which breeds more bundlers etc</p>
+        <p>i made bob who is my dog but i want bob to be more</p>
+        <p>bob believes in buyers over bundlers which is why i bought with a 0$ dev buy</p>
+        <p>i hope bob can save the market and ill be paying dex and supporting the coin using creator funds</p>
+        <a href="https://x.com/i/communities/1996739494851047748" target="_blank" class="btn">join our x community</a>
     </div>
-
-    <!-- ADS PAGE -->
-    <div class="page" id="adsPage">
-        <div class="top-buttons">
-            <button class="nav-button" onclick="showPage('homePage')">← Back to Home</button>
-        </div>
-
-        <div class="ads-content">
-            <h1>our x ads</h1>
-            
-            <p>
-                heres the breakdown of what we're doing with ads on x
-            </p>
-
-            <div class="stats-container">
-                <div class="stat-box">
-                    <div class="stat-number">$1,000</div>
-                    <div class="stat-label">spent on ads</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">250k</div>
-                    <div class="stat-label">initial eyes</div>
-                </div>
-                <div class="stat-box">
-                    <div class="stat-number">10m+</div>
-                    <div class="stat-label">target reach</div>
-                </div>
-            </div>
-
-            <h2>the plan</h2>
-            
-            <p>
-                we dropped <span class="highlight">$1,000</span> on x ads to kick things off — that gets us around <span class="highlight">250k impressions</span>
-            </p>
-            
-            <p>
-                but heres where it gets interesting: we're using <span class="highlight">fees from the memecoin</span> to keep pumping more into ads
-            </p>
-            
-            <p>
-                this way we can scale up to <span class="highlight">10m+ eyes</span> without needing a huge upfront budget
-            </p>
-
-            <div class="plan-section">
-                <h2>how fees work for us</h2>
-                <p>
-                    every transaction on our memecoin generates fees — and those fees go straight back into marketing and ads. the more people trade, the more ads we run, the more exposure we get. its a loop that keeps growing.
-                </p>
-            </div>
-        </div>
-    </div>
-
-    <script>
-        function showPage(pageId) {
-            document.querySelectorAll('.page').forEach(page => {
-                page.classList.remove('active');
-            });
-            document.getElementById(pageId).classList.add('active');
-        }
-    </script>
 </body>
 </html>
