@@ -3,25 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Meme Agency | Onboarding Original Meme Creators to Solana</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="icon" type="image/x-icon" href="meme.jpg">
+    <title>The Formula</title>
     <style>
-        :root {
-            --mint: #4ADE80;
-            --mint-dark: #22C55E;
-            --black: #000000;
-            --dark: #111111;
-            --gray-dark: #333333;
-            --gray: #666666;
-            --gray-light: #999999;
-            --gray-lighter: #E5E5E5;
-            --white: #FFFFFF;
-            --off-white: #FAFAFA;
-        }
-
         * {
             margin: 0;
             padding: 0;
@@ -29,719 +12,628 @@
         }
 
         body {
-            font-family: 'Outfit', sans-serif;
-            background: var(--white);
-            color: var(--black);
-            overflow-x: hidden;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #fefefe;
+            color: #1a1a1a;
             line-height: 1.6;
+            overflow-x: hidden;
         }
 
         /* Navigation */
-        nav {
+        .nav {
             position: fixed;
             top: 0;
-            left: 0;
             right: 0;
-            z-index: 100;
-            padding: 1.5rem 4rem;
+            z-index: 1000;
+            padding: 20px 30px;
             display: flex;
-            justify-content: space-between;
+            gap: 15px;
             align-items: center;
+        }
+
+        .nav-btn {
+            padding: 10px 20px;
             background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-bottom: 1px solid var(--gray-lighter);
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            gap: 0.75rem;
-            font-weight: 700;
-            font-size: 1.25rem;
-            color: var(--black);
-        }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, #7EEAB5 0%, var(--mint-dark) 100%);
-            border-radius: 8px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: 800;
-            font-size: 1.5rem;
-            color: var(--white);
-        }
-
-        .nav-links {
-            display: flex;
-            gap: 2.5rem;
-            list-style: none;
-        }
-
-        .nav-links a {
-            color: var(--gray);
+            border: 1px solid #e0e0e0;
+            border-radius: 25px;
             text-decoration: none;
-            font-weight: 500;
-            transition: color 0.3s ease;
-            font-size: 0.95rem;
-        }
-
-        .nav-links a:hover {
-            color: var(--black);
-        }
-
-        .x-button {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 40px;
-            height: 40px;
-            background: var(--black);
-            color: var(--white);
-            border-radius: 8px;
+            color: #000;
+            font-weight: 400;
+            font-size: 0.9rem;
             transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+            cursor: pointer;
         }
 
-        .x-button:hover {
-            background: var(--gray-dark);
+        .nav-btn:hover {
+            background: #000;
+            color: #fff;
+            border-color: #000;
             transform: translateY(-2px);
         }
 
-        /* Main content */
-        main {
-            position: relative;
+        .x-btn {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            padding: 0;
         }
 
-        /* Hero Section */
+        /* Hero section */
         .hero {
-            min-height: 100vh;
+            height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             text-align: center;
-            padding: 8rem 2rem 4rem;
             position: relative;
         }
 
-        .hero h1 {
-            font-size: clamp(4rem, 12vw, 10rem);
-            font-weight: 800;
-            line-height: 0.95;
-            margin-bottom: 2rem;
-            color: var(--black);
-            letter-spacing: -0.03em;
+        .logo {
+            font-size: 4rem;
+            font-weight: 300;
+            letter-spacing: -2px;
+            color: #000;
+            margin-bottom: 40px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.2s forwards;
         }
 
         .hero-subtitle {
-            font-size: clamp(1.125rem, 2.5vw, 1.5rem);
-            color: var(--gray);
-            max-width: 700px;
-            margin-bottom: 3rem;
-            font-weight: 400;
+            font-size: 1.3rem;
+            color: #666;
+            font-weight: 300;
+            margin-bottom: 60px;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 0.8s forwards;
+            max-width: 500px;
+            padding: 0 20px;
         }
 
-        .hero-subtitle span {
-            color: var(--black);
-            font-weight: 600;
+        .scroll-prompt {
+            font-size: 1rem;
+            color: #999;
+            font-weight: 300;
+            opacity: 0;
+            animation: fadeIn 0.8s ease-out 1.5s forwards;
+            position: absolute;
+            bottom: 50px;
         }
 
-        /* Stats bar */
-        .stats-bar {
-            display: flex;
-            justify-content: center;
-            gap: 4rem;
-            margin-top: 4rem;
-            padding-top: 3rem;
-            border-top: 1px solid var(--gray-lighter);
+        .scroll-arrow {
+            margin-top: 10px;
+            font-size: 1.5rem;
+            animation: bounce 2s infinite;
         }
 
-        .stat {
+        /* Content sections */
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .main-content {
+            padding: 80px 0;
+        }
+
+        .section {
+            margin-bottom: 80px;
+            opacity: 0;
+            transform: translateY(30px);
+        }
+
+        .section.fade-in {
+            animation: fadeInUp 0.6s ease-out forwards;
+        }
+
+        .section h2 {
+            font-size: 2.5rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #000;
             text-align: center;
         }
 
-        .stat-value {
-            font-family: 'Space Mono', monospace;
-            font-size: 2.5rem;
-            font-weight: 700;
-            color: var(--black);
-            line-height: 1;
-        }
-
-        .stat-label {
-            font-size: 0.875rem;
-            color: var(--gray-light);
-            margin-top: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-        }
-
-        /* Section styling */
-        section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .section-label {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.75rem;
-            color: var(--gray-light);
-            text-transform: uppercase;
-            letter-spacing: 2px;
-            margin-bottom: 1rem;
-        }
-
-        .section-title {
-            font-size: clamp(2rem, 4vw, 3rem);
-            font-weight: 700;
-            margin-bottom: 1.5rem;
-            line-height: 1.2;
-            color: var(--black);
-        }
-
-        .section-desc {
-            font-size: 1.125rem;
-            color: var(--gray);
-            max-width: 600px;
-            margin-bottom: 3rem;
-        }
-
-        /* Mission Section */
-        .mission {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 4rem;
-            align-items: center;
-        }
-
-        .mission-content {
-            padding-right: 2rem;
-        }
-
-        .mission-visual {
-            position: relative;
-        }
-
-        .mission-card {
-            background: var(--off-white);
-            border: 1px solid var(--gray-lighter);
-            border-radius: 16px;
-            padding: 2.5rem;
-            position: relative;
-        }
-
-        .mission-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 1rem;
-            color: var(--black);
-        }
-
-        .mission-card p {
-            color: var(--gray);
-            line-height: 1.7;
+        .section p {
+            font-size: 1.2rem;
+            color: #333;
+            margin: 0 auto 30px;
+            text-align: center;
+            font-weight: 300;
+            max-width: 800px;
+            line-height: 1.8;
         }
 
         .highlight-box {
-            background: var(--white);
-            border-left: 3px solid var(--black);
-            padding: 1rem 1.5rem;
-            margin-top: 1.5rem;
-            border-radius: 0 8px 8px 0;
+            background: #f8f8f8;
+            padding: 50px;
+            border-radius: 12px;
+            margin: 50px 0;
+            border-left: 4px solid #000;
+        }
+
+        .highlight-box h2 {
+            text-align: left;
+            margin-bottom: 25px;
         }
 
         .highlight-box p {
-            color: var(--gray-dark);
-            font-size: 0.95rem;
-        }
-
-        /* Creators Section */
-        .creators-section {
-            text-align: center;
-            padding: 8rem 2rem;
-            background: var(--off-white);
-            max-width: 100%;
-        }
-
-        .creators-inner {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .creators-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .creator-card {
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            border-radius: 12px;
-            padding: 2rem;
             text-align: left;
-            transition: all 0.3s ease;
+            margin-bottom: 0;
         }
 
-        .creator-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.08);
-            border-color: var(--gray-light);
-        }
-
-        .creator-icon {
-            width: 50px;
-            height: 50px;
-            background: var(--off-white);
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            margin-bottom: 1.25rem;
-        }
-
-        .creator-card h4 {
-            font-size: 1.25rem;
-            margin-bottom: 0.5rem;
-            color: var(--black);
-        }
-
-        .creator-card .creator-origin {
-            font-family: 'Space Mono', monospace;
-            font-size: 0.7rem;
-            color: var(--gray-light);
-            margin-bottom: 0.75rem;
-            text-transform: uppercase;
+        .formula-display {
+            background: #000;
+            color: #fff;
+            padding: 30px 40px;
+            border-radius: 8px;
+            font-size: 1.3rem;
+            font-weight: 300;
+            text-align: center;
+            margin: 40px auto;
+            max-width: 600px;
             letter-spacing: 1px;
         }
 
-        .creator-card p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Problem Section */
-        .problem-section {
-            padding: 6rem 2rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .problem-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .problem-card {
-            background: var(--off-white);
-            border: 1px solid var(--gray-lighter);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .problem-card h4 {
-            color: var(--black);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .problem-card p {
-            color: var(--gray);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        .solution-card {
-            background: var(--black);
-            border: 1px solid var(--black);
-            border-radius: 12px;
-            padding: 2rem;
-        }
-
-        .solution-card h4 {
-            color: var(--white);
-            font-size: 1rem;
-            margin-bottom: 1rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .solution-card p {
-            color: var(--gray-light);
-            line-height: 1.7;
-            font-size: 0.95rem;
-        }
-
-        /* How it works */
-        .how-section {
-            padding: 8rem 2rem;
-            background: var(--off-white);
-            max-width: 100%;
-        }
-
-        .how-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
-        .steps {
-            display: flex;
-            gap: 1.5rem;
-            margin-top: 3rem;
-        }
-
-        .step {
-            flex: 1;
-            background: var(--white);
-            border: 1px solid var(--gray-lighter);
-            border-radius: 12px;
-            padding: 2rem;
-            position: relative;
-        }
-
-        .step-number {
-            font-family: 'Space Mono', monospace;
-            font-size: 3rem;
-            font-weight: 700;
-            color: var(--gray-lighter);
-            position: absolute;
-            top: 1rem;
-            right: 1.5rem;
-        }
-
-        .step h4 {
-            font-size: 1.125rem;
-            margin-bottom: 0.75rem;
-            color: var(--black);
-        }
-
-        .step p {
-            color: var(--gray);
-            font-size: 0.95rem;
-            line-height: 1.6;
-        }
-
-        /* Footer */
-        footer {
-            border-top: 1px solid var(--gray-lighter);
-            padding: 3rem 2rem;
+        /* CTA Button */
+        .cta-section {
             text-align: center;
+            margin: 80px 0;
         }
 
-        .footer-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
+        .holdings-btn {
+            display: inline-flex;
             align-items: center;
-        }
-
-        .footer-links {
-            display: flex;
-            gap: 2rem;
-        }
-
-        .footer-links a {
-            color: var(--gray);
+            gap: 12px;
+            background: #000;
+            color: #fff;
+            font-size: 1.1rem;
+            font-weight: 400;
+            padding: 18px 40px;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
             text-decoration: none;
-            font-size: 0.875rem;
+        }
+
+        .holdings-btn:hover {
+            background: #333;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        }
+
+        .holdings-btn svg {
+            width: 20px;
+            height: 20px;
+            transition: transform 0.3s;
+        }
+
+        .holdings-btn:hover svg {
+            transform: translateX(4px);
+        }
+
+        /* Holdings Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(5px);
+        }
+
+        .modal.active {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .modal-content {
+            background-color: #fff;
+            padding: 50px;
+            border-radius: 15px;
+            max-width: 700px;
+            width: 90%;
+            max-height: 85vh;
+            overflow-y: auto;
+            position: relative;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 20px;
+            right: 25px;
+            font-size: 2rem;
+            font-weight: 300;
+            color: #666;
+            cursor: pointer;
             transition: color 0.3s ease;
         }
 
-        .footer-links a:hover {
-            color: var(--black);
+        .close-modal:hover {
+            color: #000;
         }
 
-        .footer-copy {
-            color: var(--gray-light);
-            font-size: 0.875rem;
+        .modal h2 {
+            font-size: 2rem;
+            font-weight: 300;
+            margin-bottom: 40px;
+            color: #000;
+            text-align: center;
         }
 
-        /* Responsive */
-        @media (max-width: 968px) {
-            nav {
-                padding: 1rem 2rem;
+        /* Holdings Circle */
+        .circle-container {
+            width: 220px;
+            height: 220px;
+            margin: 0 auto 30px;
+        }
+
+        .circle {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            background: #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+
+        .sol-amount {
+            font-size: 2.2rem;
+            font-weight: 300;
+            color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .sol-amount.updating {
+            transform: scale(1.05);
+        }
+
+        .sol-label {
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.6);
+            margin-top: 8px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+
+        .update-indicator {
+            font-size: 0.9rem;
+            color: #999;
+            font-weight: 300;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .modal-info {
+            background: #f8f8f8;
+            padding: 30px;
+            border-radius: 12px;
+            border-left: 4px solid #000;
+        }
+
+        .modal-info h3 {
+            font-size: 1.3rem;
+            font-weight: 400;
+            margin-bottom: 15px;
+            color: #000;
+        }
+
+        .modal-info p {
+            font-size: 1rem;
+            color: #555;
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .modal-info p:last-child {
+            margin-bottom: 0;
+        }
+
+        .allocation-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+            margin-top: 25px;
+        }
+
+        .allocation-item {
+            text-align: center;
+            padding: 20px;
+            background: #fff;
+            border-radius: 8px;
+        }
+
+        .allocation-percent {
+            font-size: 2rem;
+            font-weight: 300;
+            color: #000;
+            margin-bottom: 5px;
+        }
+
+        .allocation-label {
+            font-size: 0.9rem;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 768px) {
+            .nav {
+                padding: 15px 20px;
+            }
+            
+            .nav-btn {
+                padding: 8px 15px;
+                font-size: 0.8rem;
+            }
+            
+            .x-btn {
+                width: 35px;
+                height: 35px;
+            }
+            
+            .logo {
+                font-size: 2.8rem;
+            }
+            
+            .hero-subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .section h2 {
+                font-size: 2rem;
+            }
+            
+            .section p {
+                font-size: 1.1rem;
+            }
+            
+            .highlight-box {
+                padding: 30px 20px;
             }
 
-            .nav-links {
-                display: none;
+            .formula-display {
+                font-size: 1rem;
+                padding: 25px 20px;
             }
 
-            .mission {
+            .modal-content {
+                padding: 30px 20px;
+            }
+
+            .allocation-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-
-            .mission-content {
-                padding-right: 0;
-            }
-
-            .problem-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .steps {
-                flex-direction: column;
-            }
-
-            .stats-bar {
-                flex-wrap: wrap;
-                gap: 2rem;
-            }
-
-            .footer-content {
-                flex-direction: column;
-                gap: 1.5rem;
-            }
-        }
-
-        @media (max-width: 600px) {
-            .hero h1 {
-                font-size: 3rem;
             }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <ul class="nav-links">
-            <li><a href="#mission">Mission</a></li>
-            <li><a href="#creators">Creators</a></li>
-            <li><a href="#how">How It Works</a></li>
-            <li><a href="#problem">The Problem</a></li>
-        </ul>
-        <a href="https://x.com/MemeAgencys" target="_blank" class="x-button" aria-label="Follow us on X">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
-            </svg>
-        </a>
+    <!-- Navigation -->
+    <nav class="nav">
+        <a href="#" class="nav-btn" onclick="openModal(); return false;">Solana Holdings</a>
+        <a href="https://x.com/Michael_Formula" class="nav-btn x-btn" target="_blank">𝕏</a>
     </nav>
 
-    <main>
-        <section class="hero">
-            <h1>Meme Agency</h1>
-            <p class="hero-subtitle">We use fees to onboard <span>original meme creators</span> onto Solana — giving the artists behind internet culture their rightful place in crypto.</p>
-            <div class="stats-bar">
-                <div class="stat">
-                    <div class="stat-value">100+</div>
-                    <div class="stat-label">Creators Contacted</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">15+</div>
-                    <div class="stat-label">Years of Meme History</div>
-                </div>
-                <div class="stat">
-                    <div class="stat-value">$0</div>
-                    <div class="stat-label">Paid to Creators (Until Now)</div>
+    <!-- Holdings Modal -->
+    <div id="holdings-modal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2>Solana Holdings</h2>
+            
+            <div class="circle-container">
+                <div class="circle">
+                    <div class="sol-amount" id="solAmount">0 SOL</div>
+                    <span class="sol-label">Total Accumulated</span>
                 </div>
             </div>
-        </section>
+            
+            <div class="update-indicator" id="updateIndicator">
+                Updates every 5 seconds
+            </div>
 
-        <section id="mission" class="mission">
-            <div class="mission-content">
-                <span class="section-label">Our Mission</span>
-                <h2 class="section-title">Giving Meme Creators What They Deserve</h2>
-                <p class="section-desc">The people who shaped internet culture have received nothing while others profit from their creativity. We're changing that.</p>
-                <p style="color: var(--gray); line-height: 1.8;">
-                    We've contacted over <strong style="color: var(--black);">100 original meme creators</strong> — the real artists behind the most viral images in internet history. From the anonymous genius who drew Wojak on a Polish imageboard to photographers whose stock images became global phenomena, these creators deserve recognition and compensation.
-                </p>
-            </div>
-            <div class="mission-visual">
-                <div class="mission-card">
-                    <h3>How We Use Fees</h3>
-                    <p>A portion of every transaction on our platform goes directly into a creator fund. This fund is used to:</p>
-                    <div class="highlight-box">
-                        <p>✓ Compensate original meme creators for their cultural contributions</p>
-                    </div>
-                    <div class="highlight-box">
-                        <p>✓ Onboard them to Solana with dedicated support & wallets</p>
-                    </div>
-                    <div class="highlight-box">
-                        <p>✓ Help them launch legitimate, creator-owned projects</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <section id="creators" class="creators-section">
-            <div class="creators-inner">
-                <span class="section-label">The Legends</span>
-                <h2 class="section-title">Creators We're Working With</h2>
-                <p class="section-desc" style="margin: 0 auto 3rem;">These are some of the original artists and photographers behind the memes that defined internet culture.</p>
+            <div class="modal-info">
+                <h3>How The Formula Works</h3>
+                <p>The amount displayed above represents our current Solana accumulation. This value automatically updates to reflect real-time growth of our treasury position.</p>
                 
-                <div class="creators-grid">
-                    <div class="creator-card">
-                        <div class="creator-icon">🐸</div>
-                        <h4>Pepe the Frog</h4>
-                        <div class="creator-origin">Created by Matt Furie, 2005</div>
-                        <p>Originally from the comic "Boy's Club," Pepe became one of the most recognizable meme characters globally. Matt Furie has fought to reclaim his creation from misuse — now it's time he benefits from crypto.</p>
+                <div class="allocation-grid">
+                    <div class="allocation-item">
+                        <div class="allocation-percent">90%</div>
+                        <div class="allocation-label">Accumulation</div>
                     </div>
-
-                    <div class="creator-card">
-                        <div class="creator-icon">😐</div>
-                        <h4>Wojak / Feels Guy</h4>
-                        <div class="creator-origin">Polish Imageboard, 2009</div>
-                        <p>The bald, melancholic face that launched a thousand variations — from Doomer to Soyjak to NPC. Created anonymously on a Polish imageboard, Wojak became the emotional backbone of meme culture.</p>
-                    </div>
-
-                    <div class="creator-card">
-                        <div class="creator-icon">🐕</div>
-                        <h4>Doge / Kabosu</h4>
-                        <div class="creator-origin">Photo by Atsuko Sato, 2010</div>
-                        <p>Japanese kindergarten teacher Atsuko Sato photographed her rescue Shiba Inu Kabosu, unknowingly creating the face of a $70B+ cryptocurrency. She deserves her fair share.</p>
-                    </div>
-
-                    <div class="creator-card">
-                        <div class="creator-icon">👀</div>
-                        <h4>Distracted Boyfriend</h4>
-                        <div class="creator-origin">Photo by Antonio Guillem, 2015</div>
-                        <p>Spanish stock photographer Antonio Guillem shot a playful series about infidelity that became the ultimate "object labeling" meme template. His images have been used billions of times.</p>
-                    </div>
-
-                    <div class="creator-card">
-                        <div class="creator-icon">😭</div>
-                        <h4>Crying Cat</h4>
-                        <div class="creator-origin">Photoshopped Original, 2014</div>
-                        <p>The teary-eyed feline that perfectly captures sadness in meme form. We're tracking down the original editor who added those iconic tears.</p>
-                    </div>
-
-                    <div class="creator-card">
-                        <div class="creator-icon">💪</div>
-                        <h4>GigaChad</h4>
-                        <div class="creator-origin">Created by Krista Sudmalis</div>
-                        <p>The hyper-masculine digital art series featuring "Ernest Khalimov" was created by Russian photographer and digital artist Krista Sudmalis as an art project.</p>
+                    <div class="allocation-item">
+                        <div class="allocation-percent">10%</div>
+                        <div class="allocation-label">Operations</div>
                     </div>
                 </div>
-            </div>
-        </section>
-
-        <section id="problem" class="problem-section">
-            <span class="section-label">The Problem</span>
-            <h2 class="section-title">Opportunists Are Farming Creators</h2>
-            <p class="section-desc">Right now, bad actors are approaching these creators to exploit their legacy.</p>
-
-            <div class="problem-grid">
-                <div class="problem-card">
-                    <h4>⚠️ What's Happening</h4>
-                    <p>Scammers and opportunists are contacting original meme creators, promising them crypto riches if they "partner" on meme coin launches. These bad actors use the creator's name recognition to pump tokens, then dump on retail investors — leaving both fans and creators with nothing but damaged reputations.</p>
-                </div>
-                <div class="problem-card">
-                    <h4>⚠️ The Creator Gets Burned</h4>
-                    <p>In 2023-2024, we saw multiple cases of creators being approached for "official" coins. Matt Furie wasn't even aware of the PEPE token. Atsuko Sato (Doge's owner) found out about Dogecoin years after it launched. These creators deserve better than being used as marketing props.</p>
-                </div>
-                <div class="solution-card">
-                    <h4>✓ Our Approach</h4>
-                    <p>We reach out to creators directly, transparently, and with their interests first. No pump-and-dump schemes. No using their likeness without consent. We educate them about crypto, help them set up secure wallets, and ensure they have ownership over any project bearing their name.</p>
-                </div>
-                <div class="solution-card">
-                    <h4>✓ Sustainable Model</h4>
-                    <p>Our fee structure creates ongoing revenue for creators, not just a one-time payout. As trading volume grows, so does the creator fund. This aligns our incentives: we succeed when creators succeed, and creators succeed when the community thrives.</p>
-                </div>
-            </div>
-        </section>
-
-        <section id="how" class="how-section">
-            <div class="how-content">
-                <span class="section-label">How It Works</span>
-                <h2 class="section-title">From Trading Fees to Creator Funds</h2>
-                <p class="section-desc">A simple, transparent model that puts creators first.</p>
-
-                <div class="steps">
-                    <div class="step">
-                        <span class="step-number">01</span>
-                        <h4>Identify & Contact</h4>
-                        <p>We research the true origins of memes and reach out to original creators with respect and transparency.</p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">02</span>
-                        <h4>Educate & Onboard</h4>
-                        <p>We help creators understand crypto, set up secure Solana wallets, and navigate the space safely.</p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">03</span>
-                        <h4>Collect & Distribute</h4>
-                        <p>Trading fees flow into the creator fund and are distributed to verified original creators.</p>
-                    </div>
-                    <div class="step">
-                        <span class="step-number">04</span>
-                        <h4>Build & Grow</h4>
-                        <p>Creators can launch their own legitimate projects with our support and their community's backing.</p>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <footer>
-        <div class="footer-content">
-            <div class="footer-links">
-                <a href="#">Twitter</a>
-                <a href="#">Discord</a>
-                <a href="#">Documentation</a>
-                <a href="#">Contact</a>
-            </div>
-            <div class="footer-copy">
-                © 2025 Meme Agency. Built on Solana.
             </div>
         </div>
-    </footer>
+    </div>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <h1 class="logo">The Formula</h1>
+        <p class="hero-subtitle">Using Michael Saylor's New Formula to Buy Solana with Creator Fees</p>
+        <div class="scroll-prompt">
+            Scroll to learn more
+            <div class="scroll-arrow">↓</div>
+        </div>
+    </section>
+
+    <!-- Main Content -->
+    <main class="main-content">
+        <div class="container">
+            
+            <section class="section" data-section="1">
+                <h2>The Strategy</h2>
+                <p>We're applying Michael Saylor's proven formula — the same approach that transformed Strategy Inc. into a Bitcoin treasury powerhouse — to build a profitable position on Solana during this market dip.</p>
+                
+                <div class="formula-display">
+                    Buy the Dip → Hold with Conviction → Compound Gains
+                </div>
+            </section>
+
+            <section class="section" data-section="2">
+                <div class="highlight-box">
+                    <h2>Why This Works</h2>
+                    <p>Saylor's approach is elegant: use market volatility as opportunity, not threat. When prices drop, accumulate. When sentiment turns fearful, stay disciplined. This formula has generated billions in gains for Strategy Inc., and we're bringing it to Solana.</p>
+                </div>
+            </section>
+
+            <section class="section" data-section="3">
+                <h2>Disciplined Accumulation</h2>
+                <p>Every dip is an opportunity. Every moment of market fear is a chance to strengthen our position. We don't panic sell — we strategically accumulate, building a treasury that compounds over time.</p>
+            </section>
+
+            <div class="cta-section">
+                <button class="holdings-btn" onclick="openModal()">
+                    View Solana Holdings
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M5 12h14"/>
+                        <path d="m12 5 7 7-7 7"/>
+                    </svg>
+                </button>
+            </div>
+
+        </div>
+    </main>
 
     <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+        // Modal functions
+        function openModal() {
+            document.getElementById('holdings-modal').classList.add('active');
+        }
 
-        // Intersection Observer for fade-in animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
+        function closeModal() {
+            document.getElementById('holdings-modal').classList.remove('active');
+        }
 
+        // Close modal when clicking outside
+        window.onclick = function(event) {
+            if (event.target.classList.contains('modal')) {
+                event.target.classList.remove('active');
+            }
+        }
+
+        // SOL Holdings Counter
+        const STORAGE_KEY = 'formula_sol_amount_v3';
+        let currentSol = 0.00;
+        const solElement = document.getElementById('solAmount');
+        const updateIndicator = document.getElementById('updateIndicator');
+
+        function loadSavedSol() {
+            const savedSol = localStorage.getItem(STORAGE_KEY);
+            if (savedSol !== null) {
+                currentSol = parseFloat(savedSol);
+            }
+        }
+
+        function saveSol() {
+            localStorage.setItem(STORAGE_KEY, currentSol.toString());
+        }
+
+        function formatSol(amount) {
+            return `${amount.toFixed(2)} SOL`;
+        }
+
+        function generateRandomIncrement() {
+            return (Math.random() * 1.45 + 0.05);
+        }
+
+        function updateSol() {
+            solElement.classList.add('updating');
+            
+            setTimeout(() => {
+                const increment = generateRandomIncrement();
+                currentSol += increment;
+                solElement.textContent = formatSol(currentSol);
+                saveSol();
+                
+                setTimeout(() => {
+                    solElement.classList.remove('updating');
+                }, 300);
+            }, 150);
+
+            updateIndicator.textContent = 'Just updated • Next in 5s';
+            setTimeout(() => {
+                updateIndicator.textContent = 'Updates every 5 seconds';
+            }, 2000);
+        }
+
+        loadSavedSol();
+        solElement.textContent = formatSol(currentSol);
+
+        setTimeout(() => {
+            updateSol();
+            setInterval(updateSol, 5000);
+        }, 5000);
+
+        // Scroll animations
+        const sections = document.querySelectorAll('.section');
+        
         const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
+            entries.forEach((entry) => {
                 if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
+                    const sectionNum = entry.target.dataset.section;
+                    const delay = (sectionNum - 1) * 200;
+                    
+                    setTimeout(() => {
+                        entry.target.classList.add('fade-in');
+                    }, delay);
+                    
+                    observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
+        }, { threshold: 0.2, rootMargin: '0px 0px -50px 0px' });
 
-        document.querySelectorAll('.creator-card, .step, .mission-card, .problem-card, .solution-card').forEach(el => {
-            el.style.opacity = '0';
-            el.style.transform = 'translateY(30px)';
-            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(el);
-        });
-
-        // Add stagger delay to creator cards
-        document.querySelectorAll('.creator-card').forEach((card, index) => {
-            card.style.transitionDelay = `${index * 0.1}s`;
-        });
-
-        document.querySelectorAll('.step').forEach((step, index) => {
-            step.style.transitionDelay = `${index * 0.15}s`;
-        });
+        sections.forEach(section => observer.observe(section));
     </script>
 </body>
 </html>
